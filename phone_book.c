@@ -207,6 +207,23 @@ int delete(FILE *db_file, char *name) {
       */
 
       /* TBD */
+      if(p==base){
+        del=p;
+        p=p->next;
+        base=p;
+        deleted++;
+        free(del);
+      }else{
+        del=p;
+        prev->next=p->next;
+        p=p->next;
+        deleted++;
+        free(del);
+      }
+     
+    }else{
+       prev=p;
+       p=p->next;
     }
   }
   write_all_entries(base);
